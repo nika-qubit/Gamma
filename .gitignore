@@ -1,0 +1,20 @@
+## Java
+*.class
+*.war
+*.ear
+# .jar is needed when local repo is managed
+
+## Eclipse
+.settings/
+.project
+.classpath
+.metadata
+
+## Gradle
+build/
+
+## OS Specific
+.DS_Store
+*.db
+/.gradle/
+/bin/
