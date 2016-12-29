@@ -1,0 +1,5 @@
+group = 'rp.gamma.core'
+version = '0.0.1-SNAPSHOT'
+
+description = """Core of GW2 Quantitative Analysis Platform and Macro Tools"""
+

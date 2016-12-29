@@ -1,0 +1,12 @@
+group = 'rp.gamma.macro'
+version = '0.0.1-SNAPSHOT'
+
+description = """Macro of GW2 Quantitative Analysis Platform and Macro Tools"""
+
+jar {
+	manifest {
+		attributes (
+			"Main-Class": 'rp.gamma.mousebot.MouseApp'
+		)
+	}
+}

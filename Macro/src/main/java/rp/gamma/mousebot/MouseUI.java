@@ -1,4 +1,4 @@
-package mousebot;
+package rp.gamma.mousebot;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

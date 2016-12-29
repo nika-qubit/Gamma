@@ -1,4 +1,4 @@
-package mousebot;
+package rp.gamma.mousebot;
 
 public class MouseApp {
 	public static void main(String[] argv) {
