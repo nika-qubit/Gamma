@@ -1,5 +1,15 @@
+apply plugin: 'project-report'
+
 group = 'rp.gamma.core'
 version = '0.0.1-SNAPSHOT'
 
 description = """Core of GW2 Quantitative Analysis Platform and Macro Tools"""
 
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE")
+	compile("com.fasterxml.jackson.core:jackson-databind")
+	compile("com.google.guava:guava:11.0.2")
+	
+	testCompile("junit:junit:4.12")
+}
+	
