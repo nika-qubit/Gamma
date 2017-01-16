@@ -6,7 +6,7 @@ description = """Macro of GW2 Quantitative Analysis Platform and Macro Tools"""
 jar {
 	manifest {
 		attributes (
-			"Main-Class": 'rp.gamma.mousebot.MouseApp'
+			"Main-Class": 'rp.gamma.macro.mousebot.MouseApp'
 		)
 	}
 }

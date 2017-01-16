@@ -6,10 +6,28 @@ version = '0.0.1-SNAPSHOT'
 description = """Core of GW2 Quantitative Analysis Platform and Macro Tools"""
 
 dependencies {
+	compile("org.slf4j:slf4j-api:1.7.21")
 	compile("org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE")
 	compile("com.fasterxml.jackson.core:jackson-databind")
 	compile("com.google.guava:guava:11.0.2")
+	//local Lambda project as dependency
+	compile project(':Lambda')
 	
 	testCompile("junit:junit:4.12")
 }
+
+jar {
+	from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+	manifest {
+		attributes (
+			"Main-Class": 'rp.gamma.core.web.DemoApplication'
+		)
+	}
+}
+
 	

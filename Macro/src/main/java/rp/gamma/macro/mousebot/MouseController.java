@@ -1,4 +1,4 @@
-package rp.gamma.mousebot;
+package rp.gamma.macro.mousebot;
 
 import java.awt.AWTException;
 import java.awt.MouseInfo;

@@ -1,0 +1,35 @@
+buildscript {
+    ext {
+		springBootVersion = '1.4.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'rp.gamma.web'
+version = '0.0.1-SNAPSHOT'
+
+description = """Web Application of GW2 Quantitative Analysis Platform and Macro Tools"""
+
+jar {
+	baseName = 'Gamma'
+	version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+	compile("org.slf4j:slf4j-api:1.7.21")
+	compile("com.google.guava:guava:11.0.2")
+	
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	
+	compile project(':Core')
+}

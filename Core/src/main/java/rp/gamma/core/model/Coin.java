@@ -10,7 +10,7 @@ import java.util.Objects;
  * The real value in copper for an {@link Coin} instance = 10000*gold+100*silver+copper.
  * @author NK044575
  */
-public class Coin {
+public class Coin implements Comparable<Coin> {
   private final int value;
   private final int gold;
   private final int silver;
@@ -81,5 +81,10 @@ public class Coin {
     this.silver = value%100;
     value /=100;
     this.gold = value;
+  }
+
+  @Override
+  public int compareTo(Coin coin) {
+    return this.getVal() - coin.getVal();
   }
 }
