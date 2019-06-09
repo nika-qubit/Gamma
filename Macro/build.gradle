@@ -1,12 +1,25 @@
-group = 'rp.gamma.macro'
-version = '0.0.1-SNAPSHOT'
+plugins {
+  id 'application'
+  id 'java'
+}
 
+group = 'rp.gamma.macro'
 description = """Macro of GW2 Quantitative Analysis Platform and Macro Tools"""
+mainClassName = 'rp.gamma.macro.mousebot.MouseApp'
+
+repositories {
+  jcenter()
+  mavenCentral()
+}
+
+dependencies {
+  testCompile 'junit:junit:4.12'
+}
 
 jar {
-	manifest {
-		attributes (
-			"Main-Class": 'rp.gamma.macro.mousebot.MouseApp'
-		)
-	}
+  manifest {
+    attributes('Implementation-Title': project.name,
+        'Implementation-Version': project.version,
+        'Main-Class': 'rp.gamma.macro.mousebot.MouseApp')
+  }
 }

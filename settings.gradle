@@ -1,9 +1,10 @@
 include 'Core'
 include 'Macro'
 include 'Web'
+
 // include Lambda project so that it could be used as a dependency
 include ':Lambda'
-// Lambda project should be located on the same level under the same root directory to current project
+// Lambda project should be located on the same level under the same root directory to current project, i.e., 1 level up
 project(':Lambda').projectDir = new File(settingsDir, '../Lambda')
 
 rootProject.name = 'Gamma'

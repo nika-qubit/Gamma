@@ -1,0 +1,6 @@
+// include Lambda project so that it could be used as a dependency
+include ':Lambda'
+// Lambda project should be located 2 levels up
+project(':Lambda').projectDir = new File(settingsDir, '../../Lambda')
+
+rootProject.name = 'Core'

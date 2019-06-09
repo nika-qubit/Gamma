@@ -1,33 +1,48 @@
-apply plugin: 'project-report'
+plugins {
+  id 'application'
+  id 'java'
+}
 
 group = 'rp.gamma.core'
-version = '0.0.1-SNAPSHOT'
-
 description = """Core of GW2 Quantitative Analysis Platform and Macro Tools"""
+mainClassName = 'rp.gamma.core.web.DemoApplication'
+
+repositories {
+  jcenter()
+  mavenCentral()
+}
 
 dependencies {
-	compile("org.slf4j:slf4j-api:1.7.21")
-	compile("org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE")
-	compile("com.fasterxml.jackson.core:jackson-databind")
-	compile("com.google.guava:guava:11.0.2")
-	//local Lambda project as dependency
-	compile project(':Lambda')
-	
-	testCompile("junit:junit:4.12")
+  // slf4j
+  // https://search.maven.org/artifact/org.slf4j/slf4j-api/1.7.26/jar
+  implementation 'org.slf4j:slf4j-api:1.7.26'
+  // https://search.maven.org/artifact/org.slf4j/slf4j-jdk14/1.7.26/jar
+  // implementation 'org.slf4j:slf4j-jdk14:1.7.26'
+
+  // Guava
+  compile group: 'com.google.guava', name: 'guava', version: '23.5-jre'
+
+  compile("org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE")
+  compile("com.fasterxml.jackson.core:jackson-databind")
+
+  //local Lambda project as dependency
+  compile project(':Lambda')
+
+  testCompile 'junit:junit:4.12'
 }
 
 jar {
-	from {
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
+  from {
+    configurations.compile.collect {
+      it.isDirectory() ? it : zipTree(it)
     }
+  }
 
-	manifest {
-		attributes (
-			"Main-Class": 'rp.gamma.core.web.DemoApplication'
-		)
-	}
+  manifest {
+    attributes('Implementation-Title': project.name,
+        'Implementation-Version': project.version,
+        'Main-Class': 'rp.gamma.core.web.DemoApplication'
+    )
+  }
 }
 
-	

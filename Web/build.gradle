@@ -1,34 +1,58 @@
 buildscript {
-    ext {
-		springBootVersion = '1.4.3.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+  ext {
+    springBootVersion = '1.4.3.RELEASE'
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
 }
 
 apply plugin: 'org.springframework.boot'
 
 group = 'rp.gamma.web'
-version = '0.0.1-SNAPSHOT'
-
 description = """Web Application of GW2 Quantitative Analysis Platform and Macro Tools"""
 
-jar {
-	baseName = 'Gamma'
-	version = '0.0.1-SNAPSHOT'
+repositories {
+  jcenter()
+  mavenCentral()
 }
 
 dependencies {
-	compile("org.slf4j:slf4j-api:1.7.21")
-	compile("com.google.guava:guava:11.0.2")
-	
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	runtime('org.springframework.boot:spring-boot-devtools')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	
-	compile project(':Core')
+  // slf4j
+  // https://search.maven.org/artifact/org.slf4j/slf4j-api/1.7.26/jar
+  implementation 'org.slf4j:slf4j-api:1.7.26'
+  // https://search.maven.org/artifact/org.slf4j/slf4j-jdk14/1.7.26/jar
+  implementation 'org.slf4j:slf4j-jdk14:1.7.26'
+
+  // Guava
+  compile group: 'com.google.guava', name: 'guava', version: '23.5-jre'
+
+  compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+  runtime('org.springframework.boot:spring-boot-devtools')
+  testCompile('org.springframework.boot:spring-boot-starter-test')
+
+  compile project(':Core')
 }
+
+springBoot {
+  mainClass = 'rp.gamma.web.Application'
+}
+
+bootRepackage.enabled = false
+
+jar {
+  baseName = 'Gamma'
+  version = '0.0.1-SNAPSHOT'
+
+  manifest {
+    attributes('Implementation-Title': project.name,
+        'Implementation-Version': project.version,
+        'Main-Class': 'rp.gamma.web.Application'
+    )
+  }
+}
+
+

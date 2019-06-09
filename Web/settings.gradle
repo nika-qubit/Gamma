@@ -1,0 +1,11 @@
+// include Core project so that it could be used as a dependency
+include ':Core'
+// Core project should be located 1 level up
+project(':Core').projectDir = new File(settingsDir, '../Core')
+
+// include Lambda project so that it could be used as a dependency
+include ':Lambda'
+// Lambda project should be located 2 levels up
+project(':Lambda').projectDir = new File(settingsDir, '../../Lambda')
+
+rootProject.name = 'Web'
